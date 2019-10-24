@@ -1,31 +1,39 @@
 {
   "name": "react-unleash-flags",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
+  "version": "1.0.0",
+  "description": "React component for Unleash or Gitlab Feature Flags",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fvoordeckers/react-unleash-flags.git"
+  },
+  "keywords": [
+    "react",
+    "typescript",
+    "unleash",
+    "gitlab",
+    "feature",
+    "flags",
+    "component"
+  ],
+  "author": "Frederik Voordeckers",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fvoordeckers/react-unleash-flags/issues"
+  },
+  "homepage": "https://github.com/fvoordeckers/react-unleash-flags#readme",
+  "devDependencies": {
+    "@types/react": "^16.9.9",
+    "@types/react-dom": "^16.9.2",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
-    "react-scripts": "3.2.0"
+    "typescript": "^3.6.4"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "dependencies": {
+    "@types/node": "^12.11.5",
+    "unleash-client": "^3.2.9"
   }
 }
