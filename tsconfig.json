@@ -3,10 +3,13 @@
         "outDir": "./lib",
         "target": "es5",
         "module": "commonjs",
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "strict": true,
         "noImplicitAny": true,
         "strictNullChecks": true,
         "removeComments": true,
-        "declaration": false,
+        "declaration": true,
         "sourceMap": true,
         "jsx": "react",
         "typeRoots": [
@@ -15,12 +18,12 @@
         ],
         "types": [
             "node",
-            "./src/**/*.d.ts"
+            "jest"
         ]
     },
     "include": [
         "./src/**/*.tsx",
-        "./src/**/*.ts"
+        "./src/**/*.ts",
     ],
     "exclude": [
         "node_modules"
