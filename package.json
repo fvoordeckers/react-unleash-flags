@@ -30,13 +30,13 @@
   "devDependencies": {
     "@types/react": "^16.9.9",
     "@types/react-dom": "^16.9.2",
+    "@types/jest": "^24.0.20",
+    "@types/node": "^12.11.5",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "typescript": "^3.6.4"
   },
   "dependencies": {
-    "@types/jest": "^24.0.20",
-    "@types/node": "^12.11.5",
     "unleash-client": "^3.2.9"
   }
 }
