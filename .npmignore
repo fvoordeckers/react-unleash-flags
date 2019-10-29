@@ -1,0 +1,12 @@
+src
+node_modules/
+npm-shrinkwrap.json
+
+.git/
+.gitignore
+.editorconfig
+
+tsconfig.json
+tslint.json
+.prettierrc
+npm-debug.log
