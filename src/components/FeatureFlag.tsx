@@ -1,4 +1,4 @@
-import React, { ReactNode, Fragment } from 'react';
+import React, { Fragment, ReactNode } from 'react';
 import useFlag from '../hooks/useFlag';
 
 export type FeatureFlagComponentProps = {

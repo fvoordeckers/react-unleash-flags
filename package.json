@@ -6,7 +6,9 @@
   "scripts": {
     "build": "rm -rf ./lib && tsc",
     "prepare": "yarn build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -c tsconfig.json"
   },
   "repository": {
     "type": "git",
@@ -28,12 +30,15 @@
   },
   "homepage": "https://github.com/fvoordeckers/react-unleash-flags#readme",
   "devDependencies": {
-    "@types/react": "^16.9.9",
-    "@types/react-dom": "^16.9.2",
     "@types/jest": "^24.0.20",
     "@types/node": "^12.11.5",
+    "@types/react": "^16.9.9",
+    "@types/react-dom": "^16.9.2",
+    "prettier": "^1.18.2",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
+    "tslint": "^5.20.0",
+    "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.6.4"
   },
   "dependencies": {

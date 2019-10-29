@@ -1,8 +1,8 @@
-import useFlag from './hooks/useFlag';
+import { FlagsConfig, FlagValue } from './api/FlagsApi';
+import FeatureFlag, { FeatureFlagComponentProps } from './components/FeatureFlag';
 import FlagsContext from './components/FlagsContext';
 import FlagsProvider, { FlagsProviderProps } from './components/FlagsProvider';
-import FeatureFlag, { FeatureFlagComponentProps } from './components/FeatureFlag';
-import { FlagsConfig, FlagValue } from './api/FlagsApi';
+import useFlag from './hooks/useFlag';
 
 export {
     FeatureFlag,

@@ -1,6 +1,6 @@
-import { useState, useEffect, useContext } from 'react';
-import FlagsContext from '../components/FlagsContext';
+import { useContext, useEffect, useState } from 'react';
 import { FlagValue } from '../api/FlagsApi';
+import FlagsContext from '../components/FlagsContext';
 
 /**
  * A hook to get the value of a flag
