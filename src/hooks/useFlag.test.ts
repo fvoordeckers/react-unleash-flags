@@ -1,7 +1,10 @@
+import { renderHook } from '@testing-library/react-hooks';
 import useFlag from './useFlag';
 
-it('return the initial value undefined', () => {
-    const flag = useFlag('test');
-
-    expect(flag).toBeUndefined();
+describe('useFlag', () => {
+    it('returns the initial value undefined', () => {
+        const { result: { current } } = renderHook(() => useFlag('test'));
+    
+        expect(current).toBeUndefined();
+    });
 });

@@ -1,6 +1,6 @@
-import React, { ReactNode, useEffect, useCallback, useState, useMemo } from 'react';
-import FlagsContext from './FlagsContext';
+import React, { ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
 import FlagsApi, { FlagsConfig } from '../api/FlagsApi';
+import FlagsContext from './FlagsContext';
 
 export type FlagsProviderProps = {
     children: ReactNode,
@@ -15,12 +15,12 @@ const FlagsProvider = ({children, config}: FlagsProviderProps) => {
 
     // use a memo to store the config to prevent rerender loops
     const defaultConfig = useMemo(() => ({
-        // url to the unleash API
-        url: process.env.REACT_APP_FLAGS_CTX_URL,
         // the name of the current app
         appName: process.env.REACT_APP_FLAGS_CTX_APP_NAME,
         // the unleash instance ID (typically just one instance)
         instanceId: process.env.REACT_APP_FLAGS_CTX_INSTANCE_ID,
+        // url to the unleash API
+        url: process.env.REACT_APP_FLAGS_CTX_URL,
     }), []);
 
     // store the api instance on the state

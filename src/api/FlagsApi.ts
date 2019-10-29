@@ -1,7 +1,7 @@
 export type FlagsConfig = {
-    url: string,
     appName: string,
     instanceId: string
+    url: string,
 };
 
 export type FlagValue = {
@@ -55,8 +55,8 @@ class FlagsApi {
         };
 
         const response = await fetch(`${url}/client/features/`, {
-            method: 'GET',
             headers,
+            method: 'GET',
         });
 
         try {
