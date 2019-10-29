@@ -17,7 +17,9 @@ export type FlagValue = {
 class FlagsApi {
     private flags: FlagValue[] = [];
 
-    constructor(public config: FlagsConfig) {}
+    constructor(public config: FlagsConfig) {
+        this.checkValidInstance();
+    }
 
     /**
      * Populate the flags
@@ -45,8 +47,6 @@ class FlagsApi {
      * Fetch all the flags from the API and store them on the flags prop
      */
     private async fetchFlags() {
-        this.checkValidInstance();
-
         const { url, appName, instanceId } = this.config;
         const headers: {[key: string]: string} = {
             'Content-Type': 'application/json',

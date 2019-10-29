@@ -13,7 +13,6 @@
         "sourceMap": true,
         "jsx": "react",
         "typeRoots": [
-            "index.d.ts",
             "node_modules/@types"
         ],
         "types": [
@@ -26,6 +25,8 @@
         "./src/**/*.ts",
     ],
     "exclude": [
-        "node_modules"
+        "node_modules",
+        "./src/**/*.test.tsx",
+        "./src/**/*.test.ts",
     ]
 }
