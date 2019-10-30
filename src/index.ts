@@ -1,4 +1,4 @@
-import { FlagsConfig, FlagValue } from './api/FlagsApi';
+import { FlagsConfig, FlagValue } from './client/FlagsClient';
 import FeatureFlag, { FeatureFlagComponentProps } from './components/FeatureFlag';
 import FlagsContext from './components/FlagsContext';
 import FlagsProvider, { FlagsProviderProps } from './components/FlagsProvider';

@@ -1,6 +1,6 @@
-import FlagsApi, { FlagsConfig } from './FlagsApi';
+import FlagsClient, { FlagsConfig } from './FlagsClient';
 
-describe('FlagsApi', () => {
+describe('FlagsClient', () => {
     const config = {
         appName: 'production',
         instanceId: 'foo',
@@ -25,27 +25,27 @@ describe('FlagsApi', () => {
     });
 
     it('constructs a FlagApi with invalid config', () => {
-        const invalidFlagsApi = () => new FlagsApi({} as FlagsConfig);
+        const invalidFlagsClient = () => new FlagsClient({} as FlagsConfig);
         expect(
-            invalidFlagsApi
+            invalidFlagsClient
         ).toThrowError('Provided config is incomplete!');
     });
 
     it('constructs a FlagApi without config', () => {
-        const invalidFlagsApi = () => new FlagsApi((undefined as unknown) as FlagsConfig);
+        const invalidFlagsClient = () => new FlagsClient((undefined as unknown) as FlagsConfig);
         expect(
-            invalidFlagsApi
+            invalidFlagsClient
         ).toThrowError('No config provided!');
     });
 
     it('constructs a FlagApi instance', () => {
-        const flagsApi = new FlagsApi(config);
-        expect(JSON.stringify(flagsApi.config)).toEqual(JSON.stringify(config));
+        const flagsClient = new FlagsClient(config);
+        expect(JSON.stringify(flagsClient.config)).toEqual(JSON.stringify(config));
     });
 
     it('fetches the initial data', async () => {
-        const flagsApi = new FlagsApi(config);
-        await flagsApi.init();
+        const flagsClient = new FlagsClient(config);
+        await flagsClient.init();
 
         expect(fakeFetch).toHaveBeenCalledWith('https://foo.bar/api/client/features/', {
             headers: {
@@ -58,10 +58,10 @@ describe('FlagsApi', () => {
     });
 
     it('returns all the flags', async () => {
-        const flagsApi = new FlagsApi(config);
-        await flagsApi.init();
+        const flagsClient = new FlagsClient(config);
+        await flagsClient.init();
 
-        const flags = flagsApi.getFlags();
+        const flags = flagsClient.getFlags();
 
         expect(flags).toEqual([
             { name: 'hello', enabled: false },
@@ -70,10 +70,10 @@ describe('FlagsApi', () => {
     });
 
     it('returns a single flag by name', async () => {
-        const flagsApi = new FlagsApi(config);
-        await flagsApi.init();
+        const flagsClient = new FlagsClient(config);
+        await flagsClient.init();
 
-        const flag = flagsApi.getFlag('hello');
+        const flag = flagsClient.getFlag('hello');
 
         expect(flag).toEqual({ name: 'hello', enabled: false });
     });

@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import { FlagValue } from '../api/FlagsApi';
+import { FlagValue } from '../client/FlagsClient';
 import * as useFlag from '../hooks/useFlag';
 import FeatureFlag from './FeatureFlag';
 

@@ -14,7 +14,7 @@ export type FlagValue = {
     }>
 };
 
-class FlagsApi {
+class FlagsClient {
     private flags: FlagValue[] = [];
 
     constructor(public config: FlagsConfig) {
@@ -83,4 +83,4 @@ class FlagsApi {
     }
 }
 
-export default FlagsApi;
+export default FlagsClient;

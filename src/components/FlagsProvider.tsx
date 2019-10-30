@@ -1,5 +1,5 @@
 import React, { ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
-import FlagsApi, { FlagsConfig } from '../api/FlagsApi';
+import FlagsClient, { FlagsConfig } from '../client/FlagsClient';
 import FlagsContext from './FlagsContext';
 
 export type FlagsProviderProps = {
@@ -24,14 +24,14 @@ const FlagsProvider = ({children, config}: FlagsProviderProps) => {
     }), []);
 
     // store the api instance on the state
-    const [flagsApi, setFlagsApi] = useState<FlagsApi>();
+    const [flagsClient, setFlagsClient] = useState<FlagsClient>();
 
     // initialize the api instance
     const initState = useCallback(async () => {
-        const flagsApiInstance = new FlagsApi({...defaultConfig, ...config});
-        await flagsApiInstance.init();
+        const flagsClientInstance = new FlagsClient({...defaultConfig, ...config});
+        await flagsClientInstance.init();
 
-        setFlagsApi(flagsApiInstance);
+        setFlagsClient(flagsClientInstance);
     }, [defaultConfig, config]);
 
     // call the init on load
@@ -40,7 +40,7 @@ const FlagsProvider = ({children, config}: FlagsProviderProps) => {
     }, [initState]);
 
     return (
-        <FlagsContext.Provider value={flagsApi}>
+        <FlagsContext.Provider value={flagsClient}>
             {children}
         </FlagsContext.Provider>
     );

@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { FlagValue } from '../api/FlagsApi';
+import { FlagValue } from '../client/FlagsClient';
 import FlagsContext from '../components/FlagsContext';
 
 /**
@@ -8,26 +8,26 @@ import FlagsContext from '../components/FlagsContext';
  */
 const useFlag = (flagName: string) => {
     const [flagValue, setFlagValue] = useState<FlagValue>();
-    const flagsApiCtx = useContext(FlagsContext);
+    const FlagsClientCtx = useContext(FlagsContext);
 
     useEffect(() => {
 
-        if (flagsApiCtx) {
-            if (!flagsApiCtx.getFlags().length) {
+        if (FlagsClientCtx) {
+            if (!FlagsClientCtx.getFlags().length) {
                 // refresh the current flags set if there are no flags yet
                 const refresh = async () => {
-                    await flagsApiCtx.init();
-                    const refreshedFlag = flagsApiCtx.getFlag(flagName);
+                    await FlagsClientCtx.init();
+                    const refreshedFlag = FlagsClientCtx.getFlag(flagName);
                     setFlagValue(refreshedFlag);
                 };
                 refresh();
             } else {
                 // return the current flag if available
-                const flag = flagsApiCtx.getFlag(flagName);
+                const flag = FlagsClientCtx.getFlag(flagName);
                 setFlagValue(flag);
             }
         }
-    }, [flagsApiCtx, flagName]);
+    }, [FlagsClientCtx, flagName]);
     return flagValue;
   };
 
