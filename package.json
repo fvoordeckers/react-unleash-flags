@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "React component for Unleash or Gitlab Feature Flags",
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "build": "rm -rf ./lib && tsc",
     "test": "jest --config jestconfig.json",
