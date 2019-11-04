@@ -11,7 +11,7 @@ export type FlagsProviderProps = {
  * The flags provider, wraps a component with the context
  * and initializes the unleash api
  */
-const FlagsProvider = ({children, config = {}}: FlagsProviderProps) => {
+const FlagsProvider = ({children, config}: FlagsProviderProps) => {
 
     // use a memo to store the config to prevent rerender loops
     const defaultConfig = useMemo(() => ({
