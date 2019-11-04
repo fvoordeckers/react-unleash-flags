@@ -5,12 +5,12 @@ import FlagsProvider, { FlagsProviderProps } from './components/FlagsProvider';
 import useFlag from './hooks/useFlag';
 
 export {
-    FeatureFlag,
-    FeatureFlagComponentProps,
-    FlagsProvider,
-    FlagsProviderProps,
-    FlagsContext,
-    useFlag,
-    FlagsConfig,
-    FlagValue
+  FeatureFlag,
+  FeatureFlagComponentProps,
+  FlagsProvider,
+  FlagsProviderProps,
+  FlagsContext,
+  useFlag,
+  FlagsConfig,
+  FlagValue,
 };
