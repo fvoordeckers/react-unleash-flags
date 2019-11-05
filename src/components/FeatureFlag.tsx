@@ -1,5 +1,5 @@
-import React, { Fragment, ReactNode } from 'react';
-import useFlag from '../hooks/useFlag';
+import React, { Fragment, ReactNode, useContext } from 'react';
+import { FlagsContext } from '..';
 
 export type FeatureFlagComponentProps = {
     name: string,
@@ -18,9 +18,11 @@ export type FeatureFlagComponentProps = {
 const FeatureFlag = (
     { name, defaultValue = false, invert = false, children }: FeatureFlagComponentProps
 ) => {
+    // get the flagsClient from the context
+    const flagsClient = useContext(FlagsContext);
 
     // load the flag using the useFlag hook
-    const flag = useFlag(name);
+    const flag = flagsClient ? flagsClient.getFlag(name) : undefined;
 
     let isEnabled = defaultValue;
 
