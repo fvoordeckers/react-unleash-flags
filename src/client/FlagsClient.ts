@@ -40,7 +40,7 @@ class FlagsClient {
    * @param flagName the name of the flag
    */
   public getFlag(flagName: string): FlagValue | undefined {
-    return this.flags.filter(flag => flag.name === flagName)[0];
+    return this.flags.filter((flag) => flag.name === flagName)[0];
   }
 
   /**

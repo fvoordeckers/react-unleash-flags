@@ -12,7 +12,12 @@ describe('FlagsClient', () => {
     fakeFetch.mockImplementation(() => {
       return Promise.resolve({
         json: () => {
-          return { features: [{ name: 'hello', enabled: false }, { name: 'world', enabled: true }] };
+          return {
+            features: [
+              { name: 'hello', enabled: false },
+              { name: 'world', enabled: true },
+            ],
+          };
         },
         ok: true,
       });
@@ -56,7 +61,10 @@ describe('FlagsClient', () => {
 
     const flags = flagsClient.getFlags();
 
-    expect(flags).toEqual([{ name: 'hello', enabled: false }, { name: 'world', enabled: true }]);
+    expect(flags).toEqual([
+      { name: 'hello', enabled: false },
+      { name: 'world', enabled: true },
+    ]);
   });
 
   it('returns a single flag by name', async () => {
