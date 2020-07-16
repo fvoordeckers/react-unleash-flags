@@ -1,6 +1,6 @@
 {
   "name": "react-unleash-flags",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "React component for Unleash or Gitlab Feature Flags",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
