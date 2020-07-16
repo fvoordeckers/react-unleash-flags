@@ -8,10 +8,10 @@ export type FlagValue = {
   description: string;
   enabled: boolean;
   name: string;
-  strategies: Array<{
+  strategies: {
     name: string;
     parameters: { [key: string]: string | number | boolean };
-  }>;
+  }[];
 };
 
 class FlagsClient {
