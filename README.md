@@ -11,6 +11,7 @@ The following config is required in order to fetch te flags from your Unleash or
 - appName (the name of the app you will be running. Eg.: 'production', 'staging')
 - url (the location of the Unleash api. Eg.: ht&#8203;tps://my-unleash-url.com/api/)
 - instanceId (the unique Unleash instance ID)
+- extraHttpHeaders (OPTIONAL extra http headers passed to the fetch call. For example, an Authorization header)
 
 This configuration can be provided as an env variabe. The environment variables are:
 - `REACT_APP_FLAGS_CTX_APP_NAME`
@@ -49,6 +50,17 @@ const flagConfig = {
     appName: 'production',
     url: 'https://...',
     instanceId: '...',
+    extraHttpHeaders: {
+        Authorization: 'token123'
+    }
+};
+
+// or if env vars are used for Unleash Flags settings, they can be combined 
+// these settings will be appended to the settings from the env variables
+const flagConfig = {
+    extraHttpHeaders: {
+        Authorization: 'token123'
+    }
 };
 
 if (root != null) {

@@ -2,6 +2,7 @@ export type FlagsConfig = {
   appName: string;
   instanceId: string;
   url: string;
+  extraHttpHeaders?: { [key: string]: string };
 };
 
 export type FlagValue = {
@@ -47,11 +48,12 @@ class FlagsClient {
    * Fetch all the flags from the API and store them on the flags prop
    */
   private async fetchFlags() {
-    const { url, appName, instanceId } = this.config;
+    const { url, appName, instanceId, extraHttpHeaders = {} } = this.config;
     const headers: { [key: string]: string } = {
       'Content-Type': 'application/json',
       'UNLEASH-APPNAME': appName || '',
       'UNLEASH-INSTANCEID': instanceId || '',
+      ...extraHttpHeaders
     };
 
     const response = await fetch(`${url}/client/features/`, {
