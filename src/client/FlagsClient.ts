@@ -53,7 +53,7 @@ class FlagsClient {
       'Content-Type': 'application/json',
       'UNLEASH-APPNAME': appName || '',
       'UNLEASH-INSTANCEID': instanceId || '',
-      ...extraHttpHeaders
+      ...extraHttpHeaders,
     };
 
     const response = await fetch(`${url}/client/features/`, {

@@ -87,7 +87,7 @@ describe('FlagsClient', () => {
   });
 
   it('passes additional http headers', async () => {
-    config.extraHttpHeaders = { 'Authorization': 'token123' }
+    config.extraHttpHeaders = { Authorization: 'token123' };
     const flagsClient = new FlagsClient(config);
     await flagsClient.init();
 
