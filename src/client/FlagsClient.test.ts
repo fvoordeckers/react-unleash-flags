@@ -1,7 +1,7 @@
 import FlagsClient, { FlagsConfig } from './FlagsClient';
 
 describe('FlagsClient', () => {
-  const config = {
+  const config: FlagsConfig = {
     appName: 'production',
     instanceId: 'foo',
     url: 'https://foo.bar/api',
@@ -9,6 +9,7 @@ describe('FlagsClient', () => {
   const fakeFetch = jest.fn();
 
   beforeEach(() => {
+    fakeFetch.mockReset();
     fakeFetch.mockImplementation(() => {
       return Promise.resolve({
         json: () => {
@@ -74,5 +75,24 @@ describe('FlagsClient', () => {
     const flag = flagsClient.getFlag('hello');
 
     expect(flag).toEqual({ name: 'hello', enabled: false });
+  });
+
+  it('passes additional no additional headers', async () => {
+    const flagsClient = new FlagsClient(config);
+    await flagsClient.init();
+
+    const call = fakeFetch.mock.calls[0];
+    const headers = call[1].headers;
+    expect(Object.keys(headers)).toHaveLength(3);
+  });
+
+  it('passes additional http headers', async () => {
+    config.extraHttpHeaders = { 'Authorization': 'token123' }
+    const flagsClient = new FlagsClient(config);
+    await flagsClient.init();
+
+    const call = fakeFetch.mock.calls[0];
+    const headers = call[1].headers;
+    expect(headers.Authorization).toEqual('token123');
   });
 });
