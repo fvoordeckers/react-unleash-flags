@@ -1,4 +1,4 @@
-import React, { ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
+import React, { ReactNode, useCallback, useEffect, useMemo, useState, useRef } from 'react';
 import FlagsClient, { FlagsConfig } from '../client/FlagsClient';
 import FlagsContext from './FlagsContext';
 
@@ -12,6 +12,7 @@ export type FlagsProviderProps = {
  * and initializes the unleash api
  */
 const FlagsProvider = ({children, config}: FlagsProviderProps) => {
+    const isMountedRef = useRef(false);
 
     // use a memo to store the config to prevent rerender loops
     const defaultConfig = useMemo(() => ({
@@ -31,8 +32,20 @@ const FlagsProvider = ({children, config}: FlagsProviderProps) => {
         const flagsClientInstance = new FlagsClient({...defaultConfig, ...config });
         await flagsClientInstance.init();
 
+        if (!isMountedRef.current) {
+          return;
+        }
+
         setFlagsClient(flagsClientInstance);
     }, [defaultConfig, config]);
+
+    useEffect(() => {
+        isMountedRef.current = true;
+
+        return () => {
+          isMountedRef.current = false;
+        };
+    }, []);
 
     // call the init on load
     useEffect(() => {
