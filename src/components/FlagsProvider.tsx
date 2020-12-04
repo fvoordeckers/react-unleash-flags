@@ -29,14 +29,14 @@ const FlagsProvider = ({children, config}: FlagsProviderProps) => {
 
     // initialize the api instance
     const initState = useCallback(async () => {
-        // Do not call the API when the component is not mounted
+        const flagsClientInstance = new FlagsClient({...defaultConfig, ...config });
+        await flagsClientInstance.init();
+
+        // Do not try to update an unmounted component
         if (!isMountedRef.current) {
           return;
         }
-
-        const flagsClientInstance = new FlagsClient({...defaultConfig, ...config });
-        await flagsClientInstance.init();
-        
+            
         setFlagsClient(flagsClientInstance);
     }, [defaultConfig, config]);
 
