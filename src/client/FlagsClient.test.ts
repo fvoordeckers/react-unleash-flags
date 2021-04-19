@@ -5,6 +5,7 @@ describe('FlagsClient', () => {
     appName: 'production',
     instanceId: 'foo',
     url: 'https://foo.bar/api',
+    uri: '/client/features',
   };
   const fakeFetch = jest.fn();
 

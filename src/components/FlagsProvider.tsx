@@ -22,6 +22,8 @@ const FlagsProvider = ({children, config}: FlagsProviderProps) => {
         instanceId: process.env.REACT_APP_FLAGS_CTX_INSTANCE_ID || '',
         // url to the unleash API
         url: process.env.REACT_APP_FLAGS_CTX_URL || '',
+        // uri to the unleash API '/client/features
+        uri: process.env.REACT_APP_FLAGS_CTX_URI || '/client/features'
     }), []);
 
     // store the api instance on the state
