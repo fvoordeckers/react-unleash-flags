@@ -47,7 +47,7 @@ describe('FlagsClient', () => {
     const flagsClient = new FlagsClient(config);
     await flagsClient.init();
 
-    expect(fakeFetch).toHaveBeenCalledWith('https://foo.bar/api/client/features/', {
+    expect(fakeFetch).toHaveBeenCalledWith('https://foo.bar/api/client/features', {
       headers: {
         'Content-Type': 'application/json',
         'UNLEASH-APPNAME': 'production',

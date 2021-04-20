@@ -1,8 +1,10 @@
+import { DEFAULT_FEATURES_URI } from '../constants';
+
 export type FlagsConfig = {
   appName: string;
   instanceId: string;
   url: string;
-  uri: string;
+  uri?: string;
   extraHttpHeaders?: { [key: string]: string };
 };
 
@@ -21,7 +23,7 @@ class FlagsClient {
 
   constructor(public config: FlagsConfig) {
     this.checkValidInstance();
-    this.config.uri = config.uri || '/client/features';
+    this.config.uri = config.uri || DEFAULT_FEATURES_URI;
   }
 
   /**

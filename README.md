@@ -10,12 +10,14 @@ npm i --save react-unleash-flags
 The following config is required in order to fetch te flags from your Unleash or GitLab instance:
 - appName (the name of the app you will be running. Eg.: 'production', 'staging')
 - url (the location of the Unleash api. Eg.: ht&#8203;tps://my-unleash-url.com/api/)
+- uri (the uri of the Unleash api. Eg.: `/client/features`) (this could be different if you want to point to an Unleash Proxy instead)
 - instanceId (the unique Unleash instance ID)
 - extraHttpHeaders (OPTIONAL extra http headers passed to the fetch call. For example, an Authorization header)
 
 This configuration can be provided as an env variabe. The environment variables are:
 - `REACT_APP_FLAGS_CTX_APP_NAME`
 - `REACT_APP_FLAGS_CTX_URL`
+- `REACT_APP_FLAGS_CTX_URI`
 - `REACT_APP_FLAGS_CTX_INSTANCE_ID`
 
 The configuration can also be provide as a dict. (see examples below)
@@ -49,6 +51,7 @@ const root = document.getElementById('root');
 const flagConfig = {
     appName: 'production',
     url: 'https://...',
+    uri: '/client/features',
     instanceId: '...',
     extraHttpHeaders: {
         Authorization: 'token123'
