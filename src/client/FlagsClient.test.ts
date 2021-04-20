@@ -4,8 +4,7 @@ describe('FlagsClient', () => {
   const config: FlagsConfig = {
     appName: 'production',
     instanceId: 'foo',
-    url: 'https://foo.bar/api',
-    uri: '/client/features',
+    url: 'https://foo.bar/api'
   };
   const fakeFetch = jest.fn();
 
@@ -40,11 +39,11 @@ describe('FlagsClient', () => {
 
   it('constructs a FlagApi instance', () => {
     const flagsClient = new FlagsClient(config);
-    expect(JSON.stringify(flagsClient.config)).toEqual(JSON.stringify(config));
+    expect(JSON.stringify(flagsClient.config)).toEqual(JSON.stringify({ ...config, uri: '/client/features' }));
   });
 
   it('constructs a FlagApi instance with custom uri', () => {
-    const configWithCustomURI = { ...config, uri: 'custom_uri' };
+    const configWithCustomURI = { ...config, uri: '/custom_uri' };
     const flagsClient = new FlagsClient(configWithCustomURI);
     expect(JSON.stringify(flagsClient.config)).toEqual(JSON.stringify(configWithCustomURI));
   });
