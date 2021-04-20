@@ -43,6 +43,12 @@ describe('FlagsClient', () => {
     expect(JSON.stringify(flagsClient.config)).toEqual(JSON.stringify(config));
   });
 
+  it('constructs a FlagApi instance with custom uri', () => {
+    const configWithCustomURI = { ...config, uri: 'custom_uri' };
+    const flagsClient = new FlagsClient(configWithCustomURI);
+    expect(JSON.stringify(flagsClient.config)).toEqual(JSON.stringify(configWithCustomURI));
+  });
+
   it('fetches the initial data', async () => {
     const flagsClient = new FlagsClient(config);
     await flagsClient.init();
