@@ -1,7 +1,10 @@
+import { DEFAULT_FEATURES_URI } from '../constants';
+
 export type FlagsConfig = {
   appName: string;
   instanceId: string;
   url: string;
+  uri?: string;
   extraHttpHeaders?: { [key: string]: string };
 };
 
@@ -20,6 +23,7 @@ class FlagsClient {
 
   constructor(public config: FlagsConfig) {
     this.checkValidInstance();
+    this.config.uri = config.uri || DEFAULT_FEATURES_URI;
   }
 
   /**
@@ -48,7 +52,7 @@ class FlagsClient {
    * Fetch all the flags from the API and store them on the flags prop
    */
   private async fetchFlags() {
-    const { url, appName, instanceId, extraHttpHeaders = {} } = this.config;
+    const { url, appName, uri, instanceId, extraHttpHeaders = {} } = this.config;
     const headers: { [key: string]: string } = {
       'Content-Type': 'application/json',
       'UNLEASH-APPNAME': appName || '',
@@ -56,7 +60,7 @@ class FlagsClient {
       ...extraHttpHeaders,
     };
 
-    const response = await fetch(`${url}/client/features/`, {
+    const response = await fetch(`${url}${uri}`, {
       headers,
       method: 'GET',
     });

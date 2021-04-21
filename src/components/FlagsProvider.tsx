@@ -1,6 +1,7 @@
 import React, { ReactNode, useCallback, useEffect, useMemo, useState, useRef } from 'react';
 import FlagsClient, { FlagsConfig } from '../client/FlagsClient';
 import FlagsContext from './FlagsContext';
+import { DEFAULT_FEATURES_URI } from '../constants';
 
 export type FlagsProviderProps = {
     children: ReactNode,
@@ -22,6 +23,8 @@ const FlagsProvider = ({children, config}: FlagsProviderProps) => {
         instanceId: process.env.REACT_APP_FLAGS_CTX_INSTANCE_ID || '',
         // url to the unleash API
         url: process.env.REACT_APP_FLAGS_CTX_URL || '',
+        // uri to the unleash API '/client/features
+        uri: process.env.REACT_APP_FLAGS_CTX_URI || DEFAULT_FEATURES_URI
     }), []);
 
     // store the api instance on the state
