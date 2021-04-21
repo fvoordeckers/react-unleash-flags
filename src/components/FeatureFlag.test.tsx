@@ -8,7 +8,7 @@ describe('FeatureFlag', () => {
     const config = {
         appName: 'production',
         instanceId: 'foo',
-        url: 'https://foo.bar/api',
+        host: 'https://foo.bar/api',
     };
     let flagsClient: FlagsClient;
     const fakeFetch = jest.fn();
