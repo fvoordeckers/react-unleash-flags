@@ -84,7 +84,7 @@ class FlagsClient {
     }
 
     // swap deprecated url with host
-    if(!this.config.host && this.config.url) {
+    if (!this.config.host && this.config.url) {
       this.config.host = this.config.url;
 
       // allow developers to update url to host

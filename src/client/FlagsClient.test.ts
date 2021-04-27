@@ -4,7 +4,7 @@ describe('FlagsClient', () => {
   const config: FlagsConfig = {
     appName: 'production',
     instanceId: 'foo',
-    host: 'https://foo.bar/api'
+    host: 'https://foo.bar/api',
   };
   const fakeFetch = jest.fn();
 
@@ -106,7 +106,7 @@ describe('FlagsClient', () => {
     // tslint:disable-next-line: no-console
     console.warn = jest.fn();
     config.host = undefined;
-    config.url = 'https://foo.bar/deprecated'
+    config.url = 'https://foo.bar/deprecated';
     const flagsClient = new FlagsClient(config);
 
     // tslint:disable-next-line: no-console
