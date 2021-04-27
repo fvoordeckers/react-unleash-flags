@@ -21,7 +21,9 @@ const FlagsProvider = ({children, config}: FlagsProviderProps) => {
         appName: process.env.REACT_APP_FLAGS_CTX_APP_NAME || '',
         // the unleash instance ID (typically just one instance)
         instanceId: process.env.REACT_APP_FLAGS_CTX_INSTANCE_ID || '',
-        // url to the unleash API
+        // the unleash API host
+        host: process.env.REACT_APP_FLAGS_CTX_HOST || '',
+        // @deprecated use host instead
         url: process.env.REACT_APP_FLAGS_CTX_URL || '',
         // uri to the unleash API '/client/features
         uri: process.env.REACT_APP_FLAGS_CTX_URI || DEFAULT_FEATURES_URI

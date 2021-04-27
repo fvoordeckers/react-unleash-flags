@@ -18,7 +18,8 @@
         "types": [
             "node",
             "jest"
-        ]
+        ],
+        "allowJs": true,
     },
     "include": [
         "./src/**/*.tsx",

@@ -3,7 +3,8 @@ import { DEFAULT_FEATURES_URI } from '../constants';
 export type FlagsConfig = {
   appName: string;
   instanceId: string;
-  url: string;
+  host?: string; // make required after removing url
+  url?: string; // @deprecated in favour of host
   uri?: string;
   extraHttpHeaders?: { [key: string]: string };
 };
@@ -52,7 +53,7 @@ class FlagsClient {
    * Fetch all the flags from the API and store them on the flags prop
    */
   private async fetchFlags() {
-    const { url, appName, uri, instanceId, extraHttpHeaders = {} } = this.config;
+    const { host, appName, uri, instanceId, extraHttpHeaders = {} } = this.config;
     const headers: { [key: string]: string } = {
       'Content-Type': 'application/json',
       'UNLEASH-APPNAME': appName || '',
@@ -60,7 +61,7 @@ class FlagsClient {
       ...extraHttpHeaders,
     };
 
-    const response = await fetch(`${url}${uri}`, {
+    const response = await fetch(`${host}${uri}`, {
       headers,
       method: 'GET',
     });
@@ -82,8 +83,17 @@ class FlagsClient {
       throw Error('No config provided!');
     }
 
-    const { url, appName, instanceId } = this.config;
-    if (!url || !appName || !instanceId) {
+    // swap deprecated url with host
+    if(!this.config.host && this.config.url) {
+      this.config.host = this.config.url;
+
+      // allow developers to update url to host
+      // tslint:disable-next-line: no-console
+      console.warn('config.url is deprecated, use config.host instead!');
+    }
+
+    const { host, appName, instanceId, url } = this.config;
+    if (!host || !appName || !instanceId) {
       throw Error('Provided config is incomplete!');
     }
   }

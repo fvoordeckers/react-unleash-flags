@@ -4,7 +4,7 @@ describe('FlagsClient', () => {
   const config: FlagsConfig = {
     appName: 'production',
     instanceId: 'foo',
-    url: 'https://foo.bar/api'
+    host: 'https://foo.bar/api'
   };
   const fakeFetch = jest.fn();
 
@@ -100,5 +100,16 @@ describe('FlagsClient', () => {
     const call = fakeFetch.mock.calls[0];
     const headers = call[1].headers;
     expect(headers.Authorization).toEqual('token123');
+  });
+
+  it('uses deprecated url config', async () => {
+    // tslint:disable-next-line: no-console
+    console.warn = jest.fn();
+    config.host = undefined;
+    config.url = 'https://foo.bar/deprecated'
+    const flagsClient = new FlagsClient(config);
+
+    // tslint:disable-next-line: no-console
+    expect(console.warn).toHaveBeenCalledWith('config.url is deprecated, use config.host instead!');
   });
 });
