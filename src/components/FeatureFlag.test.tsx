@@ -9,7 +9,7 @@ describe('FeatureFlag', () => {
         appName: 'production',
         instanceId: 'foo',
         host: 'https://foo.bar/api',
-        userIdHook: () => '123'
+        userId: '123'
     };
     let flagsClient: FlagsClient;
     const fakeFetch = jest.fn();

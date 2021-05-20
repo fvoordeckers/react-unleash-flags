@@ -6,7 +6,7 @@ export type FlagsConfig = {
   host?: string; // make required after removing url
   url?: string; // @deprecated in favour of host
   uri?: string;
-  userIdHook?: () => string|undefined;
+  userId: string;
   extraHttpHeaders?: { [key: string]: string };
 };
 
@@ -54,7 +54,7 @@ class FlagsClient {
    * Get the user ID using the hook passed into the config
    */
   public getUserId(): string | undefined {
-    if(this.config.userIdHook) { return this.config.userIdHook()}
+    if(this.config.userId) { return this.config.userId}
   }
 
   /**

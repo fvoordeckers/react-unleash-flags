@@ -6,7 +6,6 @@ export type FeatureFlagComponentProps = {
     name: string,
     defaultValue?: boolean,
     invert?: boolean,
-    userId?: string,
     children: ReactNode,
 };
 
