@@ -6,11 +6,12 @@ export type FlagsConfig = {
   host?: string; // make required after removing url
   url?: string; // @deprecated in favour of host
   uri?: string;
+  userIdHook?: () => string|undefined;
   extraHttpHeaders?: { [key: string]: string };
 };
 
 export type FlagValue = {
-  description: string;
+  description?: string;
   enabled: boolean;
   name: string;
   strategies: {
@@ -47,6 +48,13 @@ class FlagsClient {
    */
   public getFlag(flagName: string): FlagValue | undefined {
     return this.flags.filter((flag) => flag.name === flagName)[0];
+  }
+
+  /**
+   * Get the user ID using the hook passed into the config
+   */
+  public getUserId(): string | undefined {
+    if(this.config.userIdHook) { return this.config.userIdHook()}
   }
 
   /**
