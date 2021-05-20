@@ -14,6 +14,7 @@ The following config is required in order to fetch te flags from your Unleash or
 - uri (the uri of the Unleash api. Eg.: `/client/features`) (this could be different if you want to point to an Unleash Proxy instead)
 - instanceId (the unique Unleash instance ID)
 - extraHttpHeaders (OPTIONAL extra http headers passed to the fetch call. For example, an Authorization header)
+- userIdHook (OPTIONAL a react hook that returns the userid as a string or undefined. Required for user id based strategies)
 
 This configuration can be provided as an env variabe. The environment variables are:
 - `REACT_APP_FLAGS_CTX_APP_NAME`
@@ -45,6 +46,7 @@ if (root != null) {
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { FlagsProvider } from 'react-unleash-flags';
+import useUserIdHook from 'useUserIdHook';
 import App from './App';
 
 const root = document.getElementById('root');
@@ -57,7 +59,8 @@ const flagConfig = {
     instanceId: '...',
     extraHttpHeaders: {
         Authorization: 'token123'
-    }
+    },
+    userIdHook: useUserIdHook,
 };
 
 // or if env vars are used for Unleash Flags settings, they can be combined 
@@ -109,6 +112,15 @@ The `<FeatureFlag>` component can handle both JSX and a function as child elemen
 </FeatureFlag>
 ```
 
+## Strategies
+
+This library supports the following strategies:
+
+- default: flag will be activated for all users
+- userWithId: flag will be activated where the user id is in the list
+- gradualRolloutUserId - flag will be activated for a percentage of users, this is deterministic based on the userId.
+
+This is the set currently supported by Gitlab.
 # Links
 - Unleash (https://unleash.github.io/)
 - GitLab Feature Flags (https://docs.gitlab.com/ee/user/project/operations/feature_flags.html)
