@@ -14,7 +14,7 @@ The following config is required in order to fetch te flags from your Unleash or
 - uri (the uri of the Unleash api. Eg.: `/client/features`) (this could be different if you want to point to an Unleash Proxy instead)
 - instanceId (the unique Unleash instance ID)
 - extraHttpHeaders (OPTIONAL extra http headers passed to the fetch call. For example, an Authorization header)
-- userIdHook (OPTIONAL a react hook that returns the userid as a string or undefined. Required for user id based strategies)
+- userId (OPTIONAL the current users userId as a string. Required for user id based strategies)
 
 This configuration can be provided as an env variabe. The environment variables are:
 - `REACT_APP_FLAGS_CTX_APP_NAME`
@@ -46,7 +46,6 @@ if (root != null) {
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { FlagsProvider } from 'react-unleash-flags';
-import useUserIdHook from 'useUserIdHook';
 import App from './App';
 
 const root = document.getElementById('root');
@@ -60,7 +59,7 @@ const flagConfig = {
     extraHttpHeaders: {
         Authorization: 'token123'
     },
-    userIdHook: useUserIdHook,
+    userId: userId,
 };
 
 // or if env vars are used for Unleash Flags settings, they can be combined 
