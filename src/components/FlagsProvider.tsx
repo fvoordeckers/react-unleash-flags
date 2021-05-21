@@ -26,7 +26,9 @@ const FlagsProvider = ({children, config}: FlagsProviderProps) => {
         // @deprecated use host instead
         url: process.env.REACT_APP_FLAGS_CTX_URL || '',
         // uri to the unleash API '/client/features
-        uri: process.env.REACT_APP_FLAGS_CTX_URI || DEFAULT_FEATURES_URI
+        uri: process.env.REACT_APP_FLAGS_CTX_URI || DEFAULT_FEATURES_URI,
+        // the userId to check strategies against
+        userId: process.env.REACT_APP_FLAGS_CTX_USER_ID || '' 
     }), []);
 
     // store the api instance on the state

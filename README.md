@@ -22,6 +22,7 @@ This configuration can be provided as an env variabe. The environment variables 
 - `REACT_APP_FLAGS_CTX_URL` (Deprecated! Use `REACT_APP_FLAGS_CTX_HOST` instead)
 - `REACT_APP_FLAGS_CTX_URI`
 - `REACT_APP_FLAGS_CTX_INSTANCE_ID`
+- `REACT_APP_FLAGS_CTX_USER_ID`
 
 The configuration can also be provide as a dict. (see examples below)
 ### `<FlagsProvider>` with config in env vars
