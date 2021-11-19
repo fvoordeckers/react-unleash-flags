@@ -1,3 +1,10 @@
+<br />
+
+# :warning: Deprecation Notice :warning:
+> **This library is deprecated** since Unleash implemented a similar alternative and has an official [Unleash SDK for React](https://docs.getunleash.io/sdks/proxy-react) now. This official SDK also works with their [Unleash proxy](https://docs.getunleash.io/sdks/unleash-proxy), which is the better solution in terms of security. 
+
+<br /><br />
+
 # React Unleash Flags
 React component for Unleash or GitLab Feature Flags. This library provides a custom hook and react components to use in JavaScript or TypeScript projects.
 
