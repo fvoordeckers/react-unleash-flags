@@ -68,7 +68,8 @@ class FlagsClient {
 
     try {
       const json = await response.json();
-      this.flags = json.features;
+      // support unleash service (features) or unleash proxy responses (toggles)
+      this.flags = json.features || json.toggles;
     } catch {
       // no json, return nothing
       this.flags = [];
